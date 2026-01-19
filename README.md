@@ -38,7 +38,7 @@ cd ..
 python report/dashboard.py
 ```
 
-Then open http://localhost:8001 in your browser.
+Then open http://localhost:5001 in your browser.
 
 ### Running Tests
 
