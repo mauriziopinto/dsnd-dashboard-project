@@ -1,0 +1,7 @@
+[flake8]
+# Ignore line length (E501) - common with long variable names and URLs
+# Ignore unused imports in __init__.py (F401)
+ignore = E501, F401
+# Exclude test directories and migrations if any
+exclude = .git,__pycache__,venv,env,dist,build
+max-line-length = 120
