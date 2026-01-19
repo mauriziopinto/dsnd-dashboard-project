@@ -76,6 +76,16 @@ class LineChart(MatplotlibViz):
         # receive the x (Day) and y (event count)
         df = model.event_counts(entity_id)
 
+        # Check if dataframe is empty
+        if df.empty:
+            fig, ax = plt.subplots()
+            ax.text(0.5, 0.5, 'No event data available',
+                    ha='center', va='center', fontsize=14)
+            ax.set_xlim(0, 1)
+            ax.set_ylim(0, 1)
+            ax.axis('off')
+            return
+
         # Use the pandas .fillna method to fill nulls with 0
         df = df.fillna(0)
 
@@ -136,6 +146,16 @@ class BarChart(MatplotlibViz):
         # to receive the data that can be passed to the machine
         # learning model
         data = model.model_data(entity_id)
+
+        # Check if data is empty
+        if data.empty:
+            fig, ax = plt.subplots()
+            ax.text(0.5, 0.5, 'No data available for prediction',
+                    ha='center', va='center', fontsize=14)
+            ax.set_xlim(0, 1)
+            ax.set_ylim(0, 1)
+            ax.axis('off')
+            return
 
         # Using the predictor class attribute
         # pass the data to the `predict_proba` method
