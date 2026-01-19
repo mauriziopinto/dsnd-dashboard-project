@@ -181,8 +181,17 @@ class BarChart(MatplotlibViz):
         # Initialize a matplotlib subplot
         fig, ax = plt.subplots()
 
-        # Run the following code unchanged
-        ax.barh([''], [pred])
+        # Apply color scale based on risk level
+        # Green = low risk (<0.4), Orange = medium risk (0.4-0.7), Red = high risk (>0.7)
+        if pred < 0.4:
+            bar_color = '#44cc44'  # Green - low risk
+        elif pred < 0.7:
+            bar_color = '#ffaa00'  # Orange - medium risk
+        else:
+            bar_color = '#ff4444'  # Red - high risk
+
+        # Run the following code unchanged with color applied
+        ax.barh([''], [pred], color=bar_color)
         ax.set_xlim(0, 1)
         ax.set_title('Predicted Recruitment Risk', fontsize=20)
 
