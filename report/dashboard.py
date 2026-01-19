@@ -230,8 +230,8 @@ class Report(CombinedComponent):
     # data visualizations, and notes table
     children = [
         Header(),
-        DashboardFilters,
-        Visualizations,
+        DashboardFilters(),
+        Visualizations(),
         NotesTable()
     ]
 
